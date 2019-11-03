@@ -6,8 +6,16 @@ services:
       context: .
     working_dir: /app/backend/
     container_name: dj_react
-    command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/app/
     ports:
       - "8000:8000"
+    depends_on:
+      - db
+
+  db:
+    build: ./postgres
+    container_name: database
+    hostname: db
+    volumes:
+      - ./postgres/postgres_data:/var/lib/postgresql/data/
