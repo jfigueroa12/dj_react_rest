@@ -1,6 +1,14 @@
 version: '3'
 
 services:
+
+  db:
+    build: ./postgres
+    container_name: database
+    hostname: db
+    volumes:
+      - ./postgres/postgres_data:/var/lib/postgresql/data/
+
   backend_django:
     build:
       context: .
@@ -12,10 +20,3 @@ services:
       - "8000:8000"
     depends_on:
       - db
-
-  db:
-    build: ./postgres
-    container_name: database
-    hostname: db
-    volumes:
-      - ./postgres/postgres_data:/var/lib/postgresql/data/
