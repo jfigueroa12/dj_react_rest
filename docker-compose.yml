@@ -7,7 +7,6 @@ services:
     working_dir: /app/backend/
     container_name: dj_react
     command: python3 manage.py runserver 0.0.0.0:8000
-    tty: true
     volumes:
       - .:/app/
     ports:
