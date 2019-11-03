@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  backend_django:
+    build:
+      context: .
+    tty: true
