@@ -11,12 +11,22 @@ services:
 
   backend_django:
     build:
-      context: .
+      context: ./backend
     working_dir: /app/backend/
-    container_name: dj_react
+    container_name: backend_django
     volumes:
       - .:/app/
     ports:
       - "8000:8000"
     depends_on:
       - db
+
+  frontend_react:
+    build:
+      context: ./frontend
+    working_dir: /app/frontend/
+    container_name: frontend_django
+    volumes:
+      - .:/app/
+    ports:
+      - "3000:3000"
